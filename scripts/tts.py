@@ -1,9 +1,14 @@
+
 import subprocess
 
 from config import (
     PIPER,
     MODEL,
     VOICE,
+    LENGTH_SCALE,
+    NOISE_SCALE,
+    NOISE_W,
+    SENTENCE_SILENCE,
 )
 
 
@@ -18,10 +23,13 @@ class TTS:
 
         command = [
             str(self.piper),
-            "--model",
-            str(self.model),
-            "--output_file",
-            str(output_file),
+            "--model", str(self.model),
+            "--output_file", str(output_file),
+
+            "--length_scale", str(LENGTH_SCALE),
+            "--noise_scale", str(NOISE_SCALE),
+            "--noise_w", str(NOISE_W),
+            "--sentence_silence", str(SENTENCE_SILENCE),
         ]
 
         subprocess.run(
